@@ -1,0 +1,51 @@
+body {
+    background-color:lightgreen;
+    font-family: Arial, sans-serif;
+    
+}
+
+h1 {
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 5px;
+    background: white;
+    margin-right:350px;
+    margin-left:350px;
+}
+
+.profile-pic {
+    border-radius: 90px;
+    width: 300px;
+    height: auto;
+}
+
+figure {
+    display: inline-block;
+    text-align: center;
+}
+
+figcaption {
+    font-style: italic;
+}
+
+.main-body {
+    display:block;
+    margin:auto;
+    text-align:center;
+    width:50%;
+    
+}
+
+.contact {
+    display:block;
+    margin:auto;
+    text-align:center;
+    width:50%;
+}
+
+hr {
+    border:5px solid green;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
