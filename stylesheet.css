@@ -1,22 +1,50 @@
+* {
+    margin:0;
+    box-sizing:border-box;
+}
+
 body {
-    background-color:lightgreen;
+    background:linear-gradient(to right top, rgb(79, 120, 79), rgb(197, 237, 197));
     font-family: Arial, sans-serif;
-    
+    height:100vh;
+    width:100vw;
+}
+
+header{
+    width:100vw;
+    height:5vh;
+    margin:0;
+    text-align:center;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+
+img {
+    margin-top:20px;
+    display:inline-block;
+    width:5vh;
+    height:5vh;
+    border-radius:5px;
 }
 
 h1 {
+    height:5vh;
+    margin:auto;
+    display:inline-block;
     text-align: center;
-    border: 2px solid white;
+    border: 2px solid tan;
     border-radius: 5px;
     background: white;
-    margin-right:350px;
-    margin-left:350px;
+    text-align:center;
+    padding:2px;
 }
 
 .profile-pic {
     border-radius: 90px;
     width: 300px;
     height: auto;
+    border: 3px solid tan;
 }
 
 figure {
@@ -49,3 +77,4 @@ hr {
     margin-bottom: 20px;
     margin-top: 20px;
 }
+
