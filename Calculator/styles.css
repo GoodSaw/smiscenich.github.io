@@ -4,6 +4,9 @@ html {
 }
 body {
     background-color: darkolivegreen;
+    background-image: url("https://www.pngkey.com/png/full/27-275694_cactus-png-clipart-transparent-background-cactus-clipart.png");
+    background-size: 30px 30px;
+    background-repeat: repeat;
     height: 100%;
 }
 .calculator-container{
