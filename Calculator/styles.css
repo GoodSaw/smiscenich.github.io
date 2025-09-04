@@ -1,0 +1,95 @@
+html {
+    box-sizing: border-box;
+    font-family:'Courier New', Courier, monospace
+}
+body {
+    background-color: darkolivegreen;
+    height: 100%;
+}
+.calculator-container{
+    background-color: grey;
+    padding: 20px 8px 15px;
+    margin: 25% auto;
+    display:flex;
+    flex-direction: column;
+    width: 50%;
+    height: 75%;
+    border: 5px solid black;
+    border-radius: 5px;
+}
+
+.button-panel {
+    display:flex;
+    flex-direction: column;
+}
+
+.numbers {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap:wrap;
+
+}
+
+.numbers button {
+    flex: 0 0 33.3333%;
+}
+
+
+.operators {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap:wrap;
+    width:50%;
+
+}
+
+.options {
+    display: flex;
+    gap: 3px;
+    
+}
+
+.options div {
+    flex: 0 0 50%;
+}
+
+.transformers{
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap:wrap;
+    width:50%;
+   margin-top: 20px;
+}
+
+#display {
+    font-weight:bold;
+    margin: auto;
+    padding: 3px 5px;
+    width:95%;
+    background-color: limegreen;
+    height:40px;
+    font-size: xx-large;
+    border-radius: 5px;
+}
+
+.equals {
+    width:100%;
+    margin-top: 20px;
+}
+
+button {
+    font-family:'Courier New', Courier, monospace;
+    font-size:larger;
+    font-weight: bold;
+    height: 50px;
+    border-radius: 5px;
+}
+
+span {
+    font-size: larger;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin: auto;
+}
