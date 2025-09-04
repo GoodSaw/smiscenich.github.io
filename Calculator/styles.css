@@ -102,4 +102,16 @@ span {
     font-size: 1.3em;
   }
 
+  .calculator-container{
+    background-color: grey;
+    padding: 20px 8px 15px;
+    margin: 25% auto;
+    display:flex;
+    flex-direction: column;
+    width: 75%;
+    height: 75%;
+    border: 5px solid black;
+    border-radius: 5px;
+}
+
 }
