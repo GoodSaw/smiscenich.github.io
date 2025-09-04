@@ -112,6 +112,7 @@ span {
   }
 
   .calculator-container{
+    text-align: center;
     background-color: grey;
     padding: 20px 8px 15px;
     margin: 25% auto;
