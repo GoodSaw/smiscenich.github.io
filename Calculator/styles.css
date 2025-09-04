@@ -93,3 +93,10 @@ span {
     margin-bottom: 5px;
     margin: auto;
 }
+
+@media (max-width: 600px) {
+  #display {
+    font-size: 1.3em;
+  }
+
+}
