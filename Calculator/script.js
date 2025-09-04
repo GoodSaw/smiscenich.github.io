@@ -112,6 +112,8 @@ function buildExpression(input) {
     } else if (input === "sign") {
         if (isOperated) {
             rightSide = changeSign(rightSide)
+        } else if (leftSide === ""){
+            leftSide = changeSign(parseFloat(display.innerText))
         } else {
             leftSide = changeSign(leftSide)
         }
