@@ -37,7 +37,7 @@ function deleteCharacter(string) {
 
 function setMemory(){
     let value = parseFloat(display.innerText)
-    if (typeof value === "number" && !isNaN(value)){
+    if (!isNaN(value)){
         sessionStorage.setItem("memory", value);
         }
 }
@@ -52,7 +52,7 @@ function handleInput(e) {
     let input = ''
     if (e.type === "keydown") {
         let inputRegex = /=|\d|\*|\+|\-|\/|\./gi
-        if (e.key === "Backspace" || e.key === "Enter") {
+        if (e.key === "Backspace" || e.key === "Enter" || e.key === "Delete") {
             input = e.key;
         }
         if (inputRegex.test(e.key)) {
@@ -79,65 +79,63 @@ function updateDisplay() {
     if (solution || parseInt(solution) === 0) {
         display.innerText = solution;
     }
+    let memory = sessionStorage.getItem("memory")
+    console.log({leftSide, rightSide, operation, isOperated, memory})
 }
 
+function getSide(){
+   return isOperated ? rightSide : leftSide;
+}
+
+function setSide(value) {
+    if (isOperated) {
+        rightSide = value;
+    } else {
+        leftSide = value;
+    }
+}
 function buildExpression(input) {
     if(display.innerText === "DIVIDE BY ZERO ERROR"){
         display.innerText = "";
+        handleClear()
     }
-    if(/\d/ig.test(input)){
-        if (isOperated === false) {
-            leftSide += input;
-        } else {
-            rightSide += input;      
-        }
+    if(/\d/ig.test(input)){   
+        setSide(getSide()+input);
     } else if (/\*|\+|\-(?![a-z])|\//.test(input)) {
-       
-        if (typeof parseFloat(display.innerText) === "number" & !isOperated) {
+        if (!isNaN(parseFloat(display.innerText)) & !isOperated) {
             leftSide = display.innerText;
         }
          if (!leftSide || rightSide) {
             return;
         } 
         isOperated = true;
-        operation = input;
-             
+        operation = input;           
     } else if (input === ".") {
-        if (isOperated) {
-            rightSide = handleFloat(rightSide)
-        } else {
-            leftSide = handleFloat(leftSide)
-        }
-        
+        setSide(handleFloat(getSide())); 
     } else if (input === "sign") {
-        if (isOperated) {
-            rightSide = changeSign(rightSide)
-        } else if (leftSide === ""){
+         if (leftSide === ""){
             leftSide = changeSign(parseFloat(display.innerText))
         } else {
-            leftSide = changeSign(leftSide)
+            setSide(changeSign(getSide()));
         }
-    } else if (input === "Backspace") {
-         if (isOperated) {
-            if (!rightSide){
+    } else if (input === "Backspace" || input === "Delete") {
+        if (isOperated && !rightSide){
                 operation = '';
                 isOperated = false;
-            }
-            rightSide = deleteCharacter(rightSide);
         } else {
-            leftSide = deleteCharacter(leftSide)
+            setSide(deleteCharacter(getSide()))
         }
     } else if (input === "clear") {
         handleClear();
         display.innerText = '';
-        localStorage.clear;
+        sessionStorage.setItem("memory", '');
     } else if (input === "memory-recall"){
         if (isOperated) {
             rightSide = getMemory() ? getMemory() : rightSide;
         } else {
             leftSide = getMemory() ? getMemory() : leftSide;
         }
-    }
+    }  
     updateDisplay()
 }
 
@@ -167,7 +165,6 @@ function evaluateExpression(){
                 result = parsedLeft / parsedRight;
                 break;
         }
-        isSolved = true;
         solution = result;
         updateDisplay();
     };
@@ -176,7 +173,13 @@ function evaluateExpression(){
 
 calculator.addEventListener("click", (e)=> {
     if (handleInput(e)==="memory-set"){
-        setMemory()}
+        setMemory()
+        let value = parseFloat(display.innerText);
+        if (!isNaN(value) && !operation) {
+            leftSide = value;
+        }
+        
+    }
     buildExpression(handleInput(e))
     if (handleInput(e)==="=") {
         evaluateExpression()
@@ -188,6 +191,3 @@ body.addEventListener("keydown", (e)=> {
         evaluateExpression()
     }
 })
-
-
-
